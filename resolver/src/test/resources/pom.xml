@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>nl.ing.mortgages</groupId>
+		<artifactId>forcerest</artifactId>
+		<version>1.0.26a-RELEASE</version>
+	</parent>
+	
+	<!-- 
+	<properties>
+		< ! - - PicketLink dependency versions - - >
+  		<version.picketlink.javaee.bom>2.6.0.CR2</version.picketlink.javaee.bom>
+	</properties>
+    -->
+	<!--     
+	<picketlink.version>2.5.0.Beta5</picketlink.version>  -->
+    <properties>
+		<picketlink.version>2.1.7.Final</picketlink.version>
+	</properties>
+	 
+	<build>
+	    <resources>
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <filtering>true</filtering>
+	        </resource>
+	    </resources>
+	</build>	 
+   	
+	<artifactId>forcerest-service</artifactId>
+	<packaging>war</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.7</version>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>forcerest-client</artifactId>
+			<version>${project.version}</version>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.2</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- <version>2.1.7.Final</version>  -->
+		<!-- 
+		<dependency>
+			<groupId>org.picketlink</groupId>
+			<artifactId>picketlink-core</artifactId>
+			<version>${picketlink.version}</version>
+		</dependency>	
+		 -->
+		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+		</dependency>	
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>	
+
+		<!-- -->
+		<dependency>
+		   <groupId>xerces</groupId>
+		   <artifactId>xercesImpl</artifactId>
+		   <version>2.9.0</version>
+		</dependency>            
+		 
+		 <dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+
+		<!-- For generating\siging tokens
+		<dependency>
+			<groupId>org.picketlink</groupId>
+			<artifactId>picketlink-api</artifactId>
+			<scope>compile</scope>
+			<version>${picketlink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.picketlink</groupId>
+			<artifactId>picketlink-impl</artifactId>
+			<scope>runtime</scope>
+			<version>${picketlink.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.picketlink</groupId>
+			<artifactId>picketlink-idm-schema</artifactId>
+			<version>${picketlink.version}</version>
+		</dependency>
+		  -->
+		 <!--  -->
+		<dependency>
+		    <groupId>com.netflix.hystrix</groupId>
+		    <artifactId>hystrix-core</artifactId>
+		    <version>1.3.0</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

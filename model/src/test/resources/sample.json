@@ -1,0 +1,37 @@
+{
+  "vertices": [
+    {
+      "id": -1624024821,
+      "groupId": "com.sun.mail",
+      "artifactId": "javax.mail",
+      "version": "1.5.0",
+      "type": "Jar"
+    },
+    {
+      "id": 1561955024,
+      "groupId": "javax.activation",
+      "artifactId": "activation",
+      "version": "1.1",
+      "type": "Jar"
+    },
+    {
+      "id": -1466729092,
+      "groupId": "javax",
+      "artifactId": "javaee-api",
+      "version": "7.0",
+      "type": "Jar"
+    }
+  ],
+  "edges": [
+    {
+      "source": -1466729092,
+      "destination": -1624024821,
+      "relationType": "Provided"
+    },
+    {
+      "source": -1624024821,
+      "destination": 1561955024,
+      "relationType": "Compile"
+    }
+  ]
+}

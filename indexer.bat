@@ -1,0 +1,1 @@
+java -cp indexer-1.0.0-SNAPSHOT-jar-with-dependencies.jar nl.ordina.jtech.mavendependencygraph.indexer -i "D:\Ordina\Big Data\index" -p 9999
