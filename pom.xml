@@ -16,8 +16,8 @@
   ~ limitations under the License.
   ~
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.ordina.j-technologies.bigdata.maven.dependency-graph</groupId>
@@ -27,17 +27,77 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spark.version>1.5.1</spark.version>
     </properties>
 
     <modules>
-        <module>resolver</module>
         <module>indexer</module>
+        <module>model</module>
+        <module>neo4j</module>
+        <module>resolver</module>
         <module>spark</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <!--INTERNAL-->
+            <dependency>
+                <groupId>nl.ordina.j-technologies.bigdata.maven.dependency-graph</groupId>
+                <artifactId>indexer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nl.ordina.j-technologies.bigdata.maven.dependency-graph</groupId>
+                <artifactId>model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nl.ordina.j-technologies.bigdata.maven.dependency-graph</groupId>
+                <artifactId>neo4j</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nl.ordina.j-technologies.bigdata.maven.dependency-graph</groupId>
+                <artifactId>resolver</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nl.ordina.j-technologies.bigdata.maven.dependency-graph</groupId>
+                <artifactId>spark</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--EXTERNAL-->
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_2.10</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming_2.10</artifactId>
+                <version>${spark.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.scalaj</groupId>
+                <artifactId>scalaj-http_2.10</artifactId>
+                <version>2.2.1</version>
+            </dependency>
+
+            <!--TEST-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
-        <pluginManagement>
+
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -45,10 +105,10 @@
                     <version>3.3</version>
                     <configuration>
                         <source>1.8</source>
+                        <target>1.8</target>
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
     </build>
 
 </project>
