@@ -5,8 +5,9 @@ import nl.ordina.jtech.mavendependencygraph.model.DependencyGraph
 import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{Logging, SparkConf}
-import org.sonatype.aether.util.artifact.DefaultArtifact
+import org.eclipse.aether.artifact.DefaultArtifact
 
+import scala.util.{Success, Try}
 import scalaj.http.{Http, HttpResponse}
 
 object App extends Logging {
@@ -34,7 +35,7 @@ object App extends Logging {
     val resolver: ArtifactResolver = new ArtifactResolver()
     val artifactCoordinate = mavenEntry.groupId + ":" + mavenEntry.artifactId + ":" + mavenEntry.version
     logInfo("ArtificactCoordinate: " + artifactCoordinate)
-    val dependencyGraph = resolver.resolveToDependencyGraph(new DefaultArtifact(artifactCoordinate))
+    val dependencyGraph = resolver.resolveToDependencyGraphv2(new DefaultArtifact(artifactCoordinate))
     dependencyGraph match {
       case null => None
       case _ => Some(dependencyGraph)
@@ -45,8 +46,14 @@ object App extends Logging {
     graphs.foreach(graph => {
       val json: String = graph.toJson
       logInfo("json: " + json)
-      val response: HttpResponse[String] = Http(url).header("content-type", "application/json").postData(json).asString
-      logInfo("Response: " + response.code)
+      Try {
+        val response: HttpResponse[String] = Http(url).header("content-type", "application/json").postData(json).asString
+        logInfo("Response: " + response.code)
+      } recoverWith {
+        case e =>
+          logError(s"NonFatal exception occured while posting json: $json", e)
+          Success()
+      }
     })
   }
 

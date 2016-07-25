@@ -2,14 +2,18 @@ package nl.ordina.jtech.mavendependencygraph.indexer
 
 import java.io.File
 import java.util.Set
+
 import scala.collection.Iterable
 import scala.collection.JavaConversions.asScalaSet
 import org.apache.maven.index.ArtifactInfo
 import org.apache.maven.index.MAVEN
 import java.io.PrintWriter
+import java.lang
+import java.lang.Thread
+
 import scala.annotation.tailrec
 
-case class Config(indexLocation: File = new File("."), port: Int = 0)
+case class Config(indexLocation: File = new File("."), port: Int = 0, throttle: Int = 0)
 
 object App {
 
@@ -23,6 +27,9 @@ object App {
       opt[Int]('p', "port") required () valueName ("<port>") action { (x, c) =>
         c.copy(port = x)
       } text ("port is the port to send the data to")
+      opt[Int]('t', "throttle") optional () valueName ("<throttle>") action { (x, c) =>
+        c.copy(throttle = x)
+      } text ("throttle is the number of milliseconds to wait between every send")
     }
     // parser.parse returns Option[C]
     parser.parse(args, Config()) map { config =>
@@ -45,7 +52,7 @@ class App(config: Config) {
     
     val totalArtifacts: Option[Int] = Server.serve(config.port, (out) =>
       // send the gav's in batches from 'a' to 'z'
-      processArtifacts(searcher, out, 'a' to 'z', 0)
+      processArtifacts(searcher, out, 'a' to 'z', 0, config.throttle)
     );
 
     totalArtifacts match {
@@ -56,7 +63,7 @@ class App(config: Config) {
   }
   
   @tailrec
-  private def processArtifacts(searcher: Searcher, out: PrintWriter, chars: Iterable[Char], acc: Int): Int = {
+  private def processArtifacts(searcher: Searcher, out: PrintWriter, chars: Iterable[Char], acc: Int, throttle: Int): Int = {
     if (chars.isEmpty) return acc
 
     // search for artifacts
@@ -66,13 +73,14 @@ class App(config: Config) {
     // flush buffer and send batch
     out.flush
     for (ai <- results) {
-      out.println(
-        Array(ai.groupId, ai.artifactId, ai.version, 
-        ai.packaging, ai.classifier).mkString(";")
-      )
+      out.println(Array(ai.groupId, ai.artifactId, ai.version, ai.packaging, ai.classifier).mkString(";"))
+      throttle match {
+        case 0 =>
+        case x => Thread.sleep(x)
+      }
     }
 
-    return processArtifacts(searcher, out, chars.tail, acc + results.size)
+    return processArtifacts(searcher, out, chars.tail, acc + results.size, throttle)
   }
 
 }

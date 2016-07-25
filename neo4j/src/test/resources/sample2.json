@@ -1,0 +1,261 @@
+{
+  "vertices": [
+    {
+      "id": -1046576258,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-settings-builder",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 1755086845,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-artifact",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 1203422489,
+      "groupId": "org.sonatype.sisu",
+      "artifactId": "sisu-inject-plexus",
+      "version": "2.1.1",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -983648099,
+      "groupId": "org.sonatype.plexus",
+      "artifactId": "plexus-sec-dispatcher",
+      "version": "1.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 1146860824,
+      "groupId": "commons-jxpath",
+      "artifactId": "commons-jxpath",
+      "version": "1.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1132956676,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-model-builder",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 681014800,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-core",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 1621596943,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-plugin-api",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1155010866,
+      "groupId": "org.codehaus.plexus",
+      "artifactId": "plexus-classworlds",
+      "version": "2.4",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 727413461,
+      "groupId": "org.sonatype.aether",
+      "artifactId": "aether-util",
+      "version": "1.11",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 1479411521,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-repository-metadata",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1531126772,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-settings",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1210190387,
+      "groupId": "org.sonatype.aether",
+      "artifactId": "aether-api",
+      "version": "1.11",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1127273798,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-aether-provider",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1526635529,
+      "groupId": "org.sonatype.aether",
+      "artifactId": "aether-impl",
+      "version": "1.11",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1344536213,
+      "groupId": "org.codehaus.plexus",
+      "artifactId": "plexus-interpolation",
+      "version": "1.14",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 1804424570,
+      "groupId": "org.codehaus.plexus",
+      "artifactId": "plexus-utils",
+      "version": "2.0.6",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": -1973158022,
+      "groupId": "org.codehaus.plexus",
+      "artifactId": "plexus-component-annotations",
+      "version": "1.5.5",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 951744931,
+      "groupId": "junit",
+      "artifactId": "junit",
+      "version": "3.8.2",
+      "classifier": "",
+      "packaging": "Jar"
+    },
+    {
+      "id": 890645130,
+      "groupId": "org.apache.maven",
+      "artifactId": "maven-model",
+      "version": "3.0.3",
+      "classifier": "",
+      "packaging": "Jar"
+    }
+  ],
+  "edges": [
+    {
+      "source": 681014800,
+      "destination": 890645130,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1531126772,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1046576258,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 1479411521,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 1755086845,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 1621596943,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1132956676,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1127273798,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1526635529,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1210190387,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 727413461,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 1203422489,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1344536213,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 1804424570,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1155010866,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -1973158022,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": -983648099,
+      "scope": "Compile"
+    },
+    {
+      "source": 681014800,
+      "destination": 1146860824,
+      "scope": "Test"
+    },
+    {
+      "source": 681014800,
+      "destination": 951744931,
+      "scope": "Test"
+    }
+  ]
+}

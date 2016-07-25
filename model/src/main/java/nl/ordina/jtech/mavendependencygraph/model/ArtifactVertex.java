@@ -33,7 +33,7 @@ public class ArtifactVertex implements Serializable {
     }
 
     public String gav(final String sep) {
-        return (groupId + sep + artifactId + sep + packaging + sep + (classifier != null ? classifier + sep : "") + version).replaceAll("[-.]", sep);
+        return (groupId + sep + artifactId + sep + packaging + sep + (classifier != null ? classifier + sep : "") + version).replaceAll("[-.+]", sep);
     }
 
     public int getId() {

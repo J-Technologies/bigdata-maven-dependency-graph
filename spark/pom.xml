@@ -9,8 +9,8 @@
 	License for the specific language governing permissions and ~ limitations 
 	under the License. ~ -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -92,26 +92,6 @@
 				</executions>
 			</plugin>
 
-			<!--<plugin>-->
-				<!--<artifactId>maven-assembly-plugin</artifactId>-->
-				<!--<version>2.6</version>-->
-				<!--<configuration>-->
-					<!--<descriptor>src/assembly/dep.xml</descriptor>-->
-					<!--<archive>-->
-						<!--<manifest>-->
-							<!--<mainClass>nl.ordina.jtech.mavendependencygraph.spark.App</mainClass>-->
-						<!--</manifest>-->
-					<!--</archive>-->
-				<!--</configuration>-->
-				<!--<executions>-->
-					<!--<execution>-->
-						<!--<phase>package</phase>-->
-						<!--<goals>-->
-							<!--<goal>single</goal>-->
-						<!--</goals>-->
-					<!--</execution>-->
-				<!--</executions>-->
-			<!--</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -153,38 +133,6 @@
 							</transformers>
 						</configuration>
 					</execution>
-					<!--<execution>-->
-						<!--<id>worker-library-jar</id>-->
-						<!--<phase>package</phase>-->
-						<!--<goals>-->
-							<!--<goal>shade</goal>-->
-						<!--</goals>-->
-						<!--<configuration>-->
-							<!--<shadedArtifactAttached>true</shadedArtifactAttached>-->
-							<!--<shadedClassifierName>worker</shadedClassifierName>-->
-							<!--<artifactSet>-->
-								<!--<includes>-->
-									<!--&lt;!&ndash; Fill in what you'd need here. &ndash;&gt;-->
-									<!--<include>nl.ordina.j-technologies.bigdata.maven.dependency-graph:*</include>-->
-									<!--<include>com.jcabi:jcabi-aether</include>-->
-									<!--<include>org.apache.maven:maven-core</include>-->
-									<!--<include>org.apache.maven:maven-aether-provider</include>-->
-									<!--<include>org.springframework:spring-context</include>-->
-									<!--<include>org.sonatype.aether:*</include>-->
-									<!--<include>org.apache.maven.wagon:wagon-provider-api</include>-->
-									<!--<include>org.sonatype.maven:*</include>-->
-									<!--<include>org.codehaus.plexus:plexus-utils</include>-->
-									<!--<include>org.sonatype.sisu:*</include>-->
-									<!--<include>org.eclipse.sisu:org.eclipse.sisu.plexus</include>-->
-									<!--<include>org.apache.maven.indexer:indexer-core</include>-->
-									<!--<include>com.github.scopt:scopt_2.10</include>-->
-								<!--</includes>-->
-							<!--</artifactSet>-->
-							<!--<transformers>-->
-								<!--<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>-->
-							<!--</transformers>-->
-						<!--</configuration>-->
-					<!--</execution>-->
 				</executions>
 			</plugin>
 		</plugins>

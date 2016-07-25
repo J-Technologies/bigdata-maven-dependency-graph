@@ -6,10 +6,11 @@ public enum Scope {
     Runtime,
     Test,
     System,
-    Import;
+    Import,
+    Unknown;
 
     public static Scope parseFromString(String scope) {
-        switch (scope) {
+        switch (scope.toLowerCase()) {
             case "compile":
                 return Scope.Compile;
             case "provided":
@@ -23,7 +24,7 @@ public enum Scope {
             case "test":
                 return Scope.Test;
             default:
-                return null;
+                return Scope.Unknown;
         }
     }
 }

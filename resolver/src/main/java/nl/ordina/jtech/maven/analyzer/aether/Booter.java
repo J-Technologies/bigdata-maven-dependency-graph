@@ -16,35 +16,45 @@
 
 package nl.ordina.jtech.maven.analyzer.aether;
 
-import org.apache.maven.repository.internal.MavenRepositorySystemSession;
-import org.sonatype.aether.RepositorySystem;
-import org.sonatype.aether.repository.LocalRepository;
-import org.sonatype.aether.repository.RemoteRepository;
-import org.sonatype.aether.util.DefaultRepositorySystemSession;
+import org.apache.maven.repository.internal.MavenRepositorySystemUtils;
+import org.eclipse.aether.RepositorySystem;
+import org.eclipse.aether.RepositorySystemSession;
+import org.eclipse.aether.repository.RemoteRepository;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A helper to boot the repository system and a repository system session.
  */
 public class Booter {
 
-    public static RepositorySystem newRepositorySystem() {
+    public static org.eclipse.aether.RepositorySystem newRepositorySystem() {
         return ManualRepositorySystemFactory.newRepositorySystem();
     }
 
-    public static DefaultRepositorySystemSession newRepositorySystemSession(RepositorySystem system) {
-        MavenRepositorySystemSession session = new MavenRepositorySystemSession();
+    public static org.eclipse.aether.DefaultRepositorySystemSession newRepositorySystemSession(org.eclipse.aether.RepositorySystem system) {
+        org.eclipse.aether.DefaultRepositorySystemSession session = MavenRepositorySystemUtils.newSession();
 
-        LocalRepository localRepo = new LocalRepository("target/local-repo");
-        session.setLocalRepositoryManager(system.newLocalRepositoryManager(localRepo));
+        org.eclipse.aether.repository.LocalRepository localRepo = new org.eclipse.aether.repository.LocalRepository("target/local-repo");
+        session.setLocalRepositoryManager(system.newLocalRepositoryManager(session, localRepo));
+
+        session.setTransferListener(new ConsoleTransferListener());
+        session.setRepositoryListener(new ConsoleRepositoryListener());
 
         return session;
     }
 
-    public static RemoteRepository newCentralRepository() {
-//        return new RemoteRepository("central", "default", "http://uk.maven.org/maven2/");
-//        return new RemoteRepository("central", "default", "http://jtechbd-cldsrvc.cloudapp.net:8090/nexus/content/repositories/maven");
-        return new RemoteRepository("central", "default", "http://jtechbd-nexus:8090/nexus/content/repositories/maven");
+    public static List<RemoteRepository> newRepositories(RepositorySystem system, RepositorySystemSession session) {
+        return new ArrayList<>(Collections.singletonList(newCentralRepository()));
+    }
 
+
+    public static RemoteRepository newCentralRepository() {
+        //return new RemoteRepository.Builder("central", "default", "http://central.maven.org/maven2/").build();
+        //return new RemoteRepository.Builder("central", "default", "http://jtechbd-cldsrvc.cloudapp.net:8090/nexus/content/repositories/maven").build();
+        return new RemoteRepository.Builder("central", "default", "http://jtechbd-nexus:8090/nexus/content/repositories/maven").build();
     }
 
 }
